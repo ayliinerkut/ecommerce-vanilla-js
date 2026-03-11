@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LUXE — Premium E-Commerce</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- ═══════════════════════════════════════
+       NAVBAR
+  ═══════════════════════════════════════ -->
+  <header class="navbar" id="navbar">
+    <div class="navbar__inner">
+
+      <!-- Logo -->
+      <a href="#" class="navbar__logo">
+        <span class="navbar__logo-text">LUXE</span>
+        <span class="navbar__logo-sub">STORE</span>
+      </a>
+      <div id="products" class="product-grid"></div>
+
+      <!-- Search Bar -->
+      <div class="navbar__search">
+        <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
+        </svg>
+        <input
+          type="text"
+          id="searchInput"
+          class="navbar__search-input"
+          placeholder="Ürün ara..."
+          autocomplete="off"
+        />
+        <button class="search-clear" id="searchClear" aria-label="Aramayı temizle">✕</button>
+      </div>
+
+      <!-- Cart Button -->
+      <button class="navbar__cart-btn" id="cartBtn" aria-label="Sepeti aç">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
+          <line x1="3" y1="6" x2="21" y2="6"/>
+          <path d="M16 10a4 4 0 0 1-8 0"/>
+        </svg>
+        <span class="cart-badge" id="cartBadge">0</span>
+      </button>
+
+    </div>
+  </header>
+
+  <!-- ═══════════════════════════════════════
+       HERO SECTION
+  ═══════════════════════════════════════ -->
+  <section class="hero">
+    <div class="hero__content">
+      <p class="hero__eyebrow">Yeni Koleksiyon 2025</p>
+      <h1 class="hero__title">Seçkin<br/><em>Ürünler</em></h1>
+      <p class="hero__sub">Kaliteli yaşamın adresi — her ürün özenle seçildi.</p>
+      <a href="#products" class="hero__cta">Keşfet</a>
+    </div>
+    <div class="hero__decor"></div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       PRODUCTS SECTION
+  ═══════════════════════════════════════ -->
+  <main class="products-section" id="products">
+    <div class="container">
+
+      <!-- Section Header -->
+      <div class="section-header">
+        <h2 class="section-title">Tüm Ürünler</h2>
+        <p class="section-meta" id="productCount">— ürün yükleniyor</p>
+      </div>
+
+      <!-- Category Filters -->
+      <div class="filters" id="categoryFilters">
+        <button class="filter-btn active" data-category="all">Tümü</button>
+        <!-- Kategoriler JS ile eklenir -->
+      </div>
+
+      <!-- Loading State -->
+      <div class="loading-state" id="loadingState">
+        <div class="spinner"></div>
+        <p>Ürünler yükleniyor…</p>
+      </div>
+
+      <!-- Error State -->
+      <div class="error-state hidden" id="errorState">
+        <div class="error-icon">⚠</div>
+        <h3>Bir hata oluştu</h3>
+        <p id="errorMsg">Ürünler yüklenemedi. Lütfen tekrar deneyin.</p>
+        <button class="retry-btn" id="retryBtn">Tekrar Dene</button>
+      </div>
+
+      <!-- Product Grid -->
+      <div class="product-grid" id="productGrid"></div>
+
+      <!-- No Results -->
+      <div class="no-results hidden" id="noResults">
+        <p>Arama kriterlerinize uygun ürün bulunamadı.</p>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- ═══════════════════════════════════════
+       PRODUCT DETAIL MODAL
+  ═══════════════════════════════════════ -->
+  <div class="modal-overlay" id="modalOverlay" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal">
+      <button class="modal__close" id="modalClose" aria-label="Modalı kapat">✕</button>
+      <div class="modal__body">
+        <div class="modal__img-wrap">
+          <img src="" alt="" id="modalImage" class="modal__img" />
+        </div>
+        <div class="modal__info">
+          <span class="modal__category" id="modalCategory"></span>
+          <h2 class="modal__title" id="modalTitle"></h2>
+          <div class="modal__rating" id="modalRating"></div>
+          <p class="modal__desc" id="modalDesc"></p>
+          <div class="modal__price-row">
+            <span class="modal__price" id="modalPrice"></span>
+            <button class="modal__add-btn" id="modalAddBtn">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
+                <line x1="3" y1="6" x2="21" y2="6"/>
+                <path d="M16 10a4 4 0 0 1-8 0"/>
+              </svg>
+              Sepete Ekle
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════
+       CART SIDEBAR
+  ═══════════════════════════════════════ -->
+  <div class="cart-overlay" id="cartOverlay"></div>
+  <aside class="cart-sidebar" id="cartSidebar" role="complementary" aria-label="Alışveriş sepeti">
+    <div class="cart-sidebar__header">
+      <h2 class="cart-sidebar__title">Sepetim</h2>
+      <button class="cart-sidebar__close" id="cartClose" aria-label="Sepeti kapat">✕</button>
+    </div>
+    <div class="cart-sidebar__body" id="cartItems">
+      <!-- Items inject edilir -->
+    </div>
+    <div class="cart-sidebar__footer" id="cartFooter">
+      <div class="cart-total-row">
+        <span>Toplam</span>
+        <span class="cart-total-price" id="cartTotalPrice">₺0.00</span>
+      </div>
+      <button class="checkout-btn" id="checkoutBtn">Siparişi Tamamla</button>
+    </div>
+  </aside>
+
+  <!-- ═══════════════════════════════════════
+       TOAST NOTIFICATION
+  ═══════════════════════════════════════ -->
+  <div class="toast" id="toast"></div>
+
+  <!-- ═══════════════════════════════════════
+       FOOTER
+  ═══════════════════════════════════════ -->
+  <footer class="footer">
+    <div class="footer__inner container">
+      <span class="footer__logo">LUXE STORE</span>
+      <p class="footer__copy">© 2025 Luxe Store. Tüm hakları saklıdır.</p>
+    </div>
+  </footer>
+
+  <script type="module" src="script.js"></script>
+</body>
+</html>
