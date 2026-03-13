@@ -30,7 +30,7 @@ Projede ürün listeleme, sepet sistemi ve responsive tasarım mevcuttur.
 
 ## 🚀 Canlı Demo
 
-[GitHub Pages Demo](https://ayliinerkut.github.io/Modern-E-Commerce/)  
+[GitHub Pages Demo](https://ayliinerkut.github.io/ecommerce-vanilla-js/)  
 
 > Linki kendi kullanıcı adına göre güncelle.  
 
@@ -63,4 +63,5 @@ Proje tamamen frontend odaklıdır, backend gerektirmez.
 FakeStore API kullanıldığı için ürün verileri her zaman günceldir.
 
 Daha profesyonel bir portfolio için skeleton loading, toast notifications, dark mode eklenebilir.
+
 
