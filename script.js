@@ -45,9 +45,7 @@ const State = (() => {
     setCart(c) { _cart = c; },
   };
 })();
-<script>
-console.log("JS yüklendi mi?")
-</script>
+
 
 /* ─── DOM CACHE ───────────────────────────────────────── */
 const DOM = {
