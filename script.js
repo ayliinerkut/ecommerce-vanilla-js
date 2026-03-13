@@ -47,7 +47,8 @@ const State = (() => {
     setSearchQuery(q) { _searchQuery = q; },
     setCart(c) { _cart = c; },
   };
-});
+
+   })();
 
 /* ─── DOM CACHE ───────────────────────────────────────── */
 const DOM = {
